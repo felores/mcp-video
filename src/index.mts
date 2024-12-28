@@ -11,6 +11,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { spawnPromise } from "spawn-rx";
 import { rimraf } from "rimraf";
+import { cleanSubtitles } from "./vtt2txt.js";
 
 const server = new Server(
   {
@@ -70,7 +71,8 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       fs.readdirSync(tempDir).forEach((file) => {
         const fileContent = fs.readFileSync(path.join(tempDir, file), "utf8");
-        content += `${file}\n====================\n${fileContent}`;
+        const cleanedContent = cleanSubtitles(fileContent);
+        content += `${cleanedContent}\n\n`;
       });
     } finally {
       rimraf.sync(tempDir);

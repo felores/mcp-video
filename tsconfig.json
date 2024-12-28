@@ -15,12 +15,14 @@
     "pretty": true,
     "target": "es2015",
     "outDir": "lib",
-    "lib": ["dom", "es2015"]
+    "lib": ["dom", "es2015"],
+    "allowJs": true,
+    "checkJs": true
   },
   "formatCodeOptions": {
     "indentSize": 2,
     "tabSize": 2
   },
-  "include": ["src/**/*.mts"],
+  "include": ["src/**/*.mts", "*.js", "*.d.ts"],
   "exclude": ["node_modules", "lib"]
 }

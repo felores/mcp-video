@@ -7,7 +7,8 @@
   "description": "YouTube downloader for MCP",
   "main": "index.js",
   "scripts": {
-    "prepare": "tsc && shx chmod +x ./lib/index.mjs"
+    "prepare": "tsc && shx chmod +x ./lib/index.mjs",
+    "build": "tsc"
   },
   "author": "Ani Betts <anais@anaisbetts.org>",
   "license": "MIT",
