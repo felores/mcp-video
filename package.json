@@ -5,10 +5,13 @@
     "mcp-youtube": "lib/index.mjs"
   },
   "description": "YouTube downloader for MCP",
-  "main": "index.js",
+  "main": "lib/index.mjs",
+  "type": "module",
   "scripts": {
-    "prepare": "tsc && shx chmod +x ./lib/index.mjs",
-    "build": "tsc"
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean",
+    "build": "tsc --project tsconfig.json",
+    "start": "node lib/index.mjs"
   },
   "author": "Ani Betts <anais@anaisbetts.org>",
   "license": "MIT",

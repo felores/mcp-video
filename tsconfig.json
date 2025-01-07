@@ -10,19 +10,19 @@
     "noUnusedLocals": true,
     "noImplicitThis": true,
     "noUnusedParameters": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "pretty": true,
-    "target": "es2015",
+    "target": "ES2020",
     "outDir": "lib",
-    "lib": ["dom", "es2015"],
+    "lib": ["es2020"],
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
+    "esModuleInterop": true
   },
-  "formatCodeOptions": {
-    "indentSize": 2,
-    "tabSize": 2
+  "ts-node": {
+    "esm": true
   },
-  "include": ["src/**/*.mts", "*.js", "*.d.ts"],
+  "include": ["src/**/*.mts", "src/**/*.ts"],
   "exclude": ["node_modules", "lib"]
 }

@@ -34,3 +34,6 @@ docs
 .idea/
 
 dist/
+
+# Downloaded videos
+downloads/
