@@ -1,10 +1,10 @@
 {
-  "name": "@anaisbetts/mcp-youtube",
-  "version": "0.5.1",
+  "name": "@felores/mcp-video",
+  "version": "0.5.3",
   "bin": {
-    "mcp-youtube": "lib/index.mjs"
+    "mcp-video": "lib/index.mjs"
   },
-  "description": "YouTube downloader for MCP",
+  "description": "Multi-platform video downloader and transcript extractor for MCP (YouTube, Vimeo, Twitter/X, TikTok, etc.)",
   "main": "lib/index.mjs",
   "type": "module",
   "scripts": {
@@ -13,7 +13,7 @@
     "build": "tsc --project tsconfig.json",
     "start": "node lib/index.mjs"
   },
-  "author": "Ani Betts <anais@anaisbetts.org>",
+  "author": "felores",
   "license": "MIT",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^0.6.0",

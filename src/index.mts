@@ -14,12 +14,12 @@ import { rimraf } from "rimraf";
 import { cleanSubtitles } from "./vtt2txt.mjs";
 
 // Get downloads directory from env or default to project root
-const DOWNLOADS_DIR = process.env.YOUTUBE_DOWNLOADS_DIR || path.join(process.cwd(), "downloads");
+const DOWNLOADS_DIR = process.env.DOWNLOADS_DIR || path.join(process.cwd(), "downloads");
 console.error('Using downloads directory:', DOWNLOADS_DIR);
 
 const server = new Server(
   {
-    name: "mcp-youtube",
+    name: "mcp-video",
     version: "0.5.1",
   },
   {
@@ -33,24 +33,27 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: [
       {
-        name: "transcript_youtube_url",
-        description: "Download and process YouTube video subtitles for analysis. Use this tool when asked to summarize, analyze, or extract information from YouTube videos. This enables Claude to understand video content through subtitles, so it should offer to use this tool when users ask about YouTube video content.",
+        name: "get_video_transcript",
+        description: "Download and process video subtitles for analysis from various platforms (YouTube, Vimeo, Twitter/X, TikTok, etc.) using yt-dlp. Use this tool when asked to summarize, analyze, or extract information from any video that has subtitles/closed captions. This enables Claude to understand video content through subtitles.",
         inputSchema: {
           type: "object",
           properties: {
-            url: { type: "string", description: "URL of the YouTube video" },
+            url: { type: "string", description: "URL of the video from any supported platform (YouTube, Vimeo, Twitter/X, TikTok, etc.)" },
           },
           required: ["url"],
         },
       },
       {
         name: "download_video",
-        description: "Download YouTube video in best quality (limited to 1080p). Downloads are stored in the downloads directory.",
+        description: "Download video in best quality (limited to 1080p) from various platforms (YouTube, Vimeo, Twitter/X, TikTok, etc.) using yt-dlp. Downloads are stored in the downloads directory. IMPORTANT: Clients should always provide a sanitized filename using the platform and video ID format to ensure consistent naming and avoid conflicts.",
         inputSchema: {
           type: "object",
           properties: {
-            url: { type: "string", description: "URL of the YouTube video" },
-            filename: { type: "string", description: "Optional custom filename for the downloaded video" },
+            url: { type: "string", description: "URL of the video from any supported platform (YouTube, Vimeo, Twitter/X, TikTok, etc.)" },
+            filename: { 
+              type: "string", 
+              description: "Sanitized filename using platform-id format. Examples:\n- YouTube: youtube-{video_id} (e.g. 'youtube-MhOTvvmlqLM' from youtube.com/watch?v=MhOTvvmlqLM)\n- Twitter/X: x-{tweet_id} (e.g. 'x-1876565449615217019' from x.com/user/status/1876565449615217019)\n- Vimeo: vimeo-{video_id} (e.g. 'vimeo-123456789' from vimeo.com/123456789)" 
+            },
           },
           required: ["url"],
         },
@@ -60,7 +63,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
 });
 
 server.setRequestHandler(CallToolRequestSchema, async (request) => {
-  if (request.params.name === "transcript_youtube_url") {
+  if (request.params.name === "get_video_transcript") {
     try {
       const { url } = request.params.arguments as { url: string };
 
