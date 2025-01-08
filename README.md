@@ -1,6 +1,8 @@
 # Video MCP Server
 
-A powerful Model Context Protocol (MCP) server that enables AI assistants like Claude to work with video content. This server provides capabilities for downloading video transcripts and videos from various platforms including YouTube, Vimeo, Twitter/X, and TikTok.
+A powerful Model Context Protocol (MCP) server that enables AI assistants like Claude to work with video content. This server provides capabilities for downloading video transcripts in plain text and videos from various platforms including YouTube, Vimeo, Twitter/X, and TikTok.
+
+This project is a fork from anaisbetts/mcp-youtube which only outputs the transcript with timestamps. This project outputs the transcript in plain text without timestamps for easy LLM consumption and adds the download tool.
 
 ## Features
 
@@ -12,6 +14,30 @@ A powerful Model Context Protocol (MCP) server that enables AI assistants like C
   - Twitter/X
   - TikTok
   - And more platforms supported by yt-dlp
+
+## MCP Tools
+
+This server provides two powerful tools that can be used by AI assistants through the Model Context Protocol:
+
+### 1. Video Transcript Tool (`get_video_transcript`)
+- Downloads and processes video subtitles/closed captions into plain text format
+- Removes timestamps and formatting for easy AI consumption
+- Supports auto-generated captions when available
+- Works with multiple languages (defaults to English)
+- Input: Video URL from any supported platform
+- Output: Clean, plain text transcript ready for AI analysis
+
+### 2. Video Download Tool (`download_video`)
+- Downloads videos in high quality (limited to 1080p for reasonable file sizes)
+- Automatically selects the best quality format
+- Merges video and audio streams when necessary
+- Saves files to a configurable downloads directory
+- Input: 
+  - Video URL from any supported platform
+  - Optional filename (recommended format: platform-id, e.g., 'youtube-MhOTvvmlqLM')
+- Output: 
+  - Downloaded video file in MP4 format
+  - File information including title, duration, resolution, and file size
 
 ## Prerequisites
 
