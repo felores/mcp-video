@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 # Multi-Platform Video MCP Server
+=======
+# Video MCP Server
+>>>>>>> 780c12a77a1ff64c284c2a2e1799d5b14cd9b1f3
 
 A powerful Model Context Protocol (MCP) server that enables AI assistants like Claude to work with video content. This server provides capabilities for downloading video transcripts and videos from various platforms including YouTube, Vimeo, Twitter/X, and TikTok.
 
 ## Features
 
+<<<<<<< HEAD
 - Download and process video subtitles/closed captions for AI analysis
 - Download videos in high quality (up to 1080p)
 - Support for multiple platforms:
@@ -189,3 +194,7 @@ npm test
 ## License
 
 MIT License - See [COPYING](COPYING) for details.
+=======
+1. Install `yt-dlp` (Homebrew and WinGet both work great here)
+1. Now, install this via [mcp-installer](https://github.com/anaisbetts/mcp-installer), use the name `@anaisbetts/mcp-youtube`
+>>>>>>> 780c12a77a1ff64c284c2a2e1799d5b14cd9b1f3
