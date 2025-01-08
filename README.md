@@ -78,7 +78,7 @@ Install the MCP server using the [mcp-installer](https://github.com/anaisbetts/m
 npm install -g @anaisbetts/mcp-installer
 
 # Install this MCP server
-mcp-installer install @anaisbetts/mcp-youtube
+mcp-installer install @felores/mcp-video
 ```
 
 ### Option 2: Manual Installation (Recommended for Developers)
