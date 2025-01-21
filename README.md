@@ -4,6 +4,26 @@ A powerful Model Context Protocol (MCP) server that enables AI assistants like C
 
 This project is a fork from anaisbetts/mcp-youtube which only outputs the transcript with timestamps. This project outputs the transcript in plain text without timestamps for easy LLM consumption and adds the download tool.
 
+## Quick Start
+
+1. First, install yt-dlp (required):
+   ```bash
+   # On macOS
+   brew install yt-dlp
+
+   # On Windows (using winget)
+   winget install yt-dlp
+
+   # On Linux (Ubuntu/Debian)
+   sudo apt install yt-dlp
+   ```
+   For other installation methods, see [Installing yt-dlp](#installing-yt-dlp) below.
+
+2. Then install and run the MCP server:
+   ```bash
+   npx @felores/mcp-video
+   ```
+
 ## Features
 
 - Download and process video subtitles/closed captions for AI analysis
@@ -41,18 +61,11 @@ This server provides two powerful tools that can be used by AI assistants throug
 
 ## Prerequisites
 
-### Node.js and npm
+Before installing the MCP server, make sure you have the following prerequisites:
 
-1. Install Node.js (version 18 or higher) and npm from [nodejs.org](https://nodejs.org/)
-2. Verify installation:
-   ```bash
-   node --version
-   npm --version
-   ```
+### 1. yt-dlp (Required)
 
-### Installing yt-dlp
-
-The server requires `yt-dlp` to be installed on your system. Here are the installation methods for different platforms:
+The server requires `yt-dlp` to be installed on your system first. Here are the installation methods for different platforms:
 
 #### Windows
 1. Using WinGet (Recommended):
@@ -94,11 +107,37 @@ The server requires `yt-dlp` to be installed on your system. Here are the instal
    python3 -m pip install -U yt-dlp
    ```
 
+### 2. Node.js and npm
+
+1. Install Node.js (version 18 or higher) and npm from [nodejs.org](https://nodejs.org/)
+2. Verify installation:
+   ```bash
+   node --version
+   npm --version
+   ```
+
 ## Installation and Setup
 
-### Option 1: Direct Installation (Recommended for Users)
+After installing the prerequisites above, you can install the MCP server using one of these methods:
 
-Install the MCP server using the [mcp-installer](https://github.com/anaisbetts/mcp-installer):
+### Option 1: NPX Installation (Recommended)
+
+The easiest way to install and use the MCP server is via npx:
+```bash
+npx @felores/mcp-video
+```
+
+This will automatically install and run the latest version of the server.
+
+For a permanent installation:
+```bash
+npm install -g @felores/mcp-video
+mcp-video
+```
+
+### Option 2: Using MCP Installer
+
+Install using the [mcp-installer](https://github.com/anaisbetts/mcp-installer):
 ```bash
 # Install mcp-installer if you haven't already
 npm install -g @anaisbetts/mcp-installer
@@ -107,7 +146,7 @@ npm install -g @anaisbetts/mcp-installer
 mcp-installer install @felores/mcp-video
 ```
 
-### Option 2: Manual Installation (Recommended for Developers)
+### Option 3: Manual Installation (For Developers)
 
 1. Clone the repository:
    ```bash
@@ -201,6 +240,34 @@ npm test
    ```
 
 4. Create a Pull Request from your fork to the main repository
+
+## Reference
+
+### Supported Platforms
+- YouTube
+- Vimeo
+- Twitter/X
+- TikTok
+- And any platform supported by [yt-dlp](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md)
+
+### Command Line Options
+```bash
+mcp-video [options]
+
+Options:
+  --downloads-dir    Specify custom downloads directory (default: ./downloads)
+  --help            Show help information
+  --version         Show version information
+```
+
+### Environment Variables
+| Variable | Description | Default |
+|----------|-------------|---------|
+| DOWNLOADS_DIR | Directory for downloaded videos | ./downloads |
+
+### Dependencies
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - Video downloader
+- [Model Context Protocol](https://github.com/anaisbetts/mcp) - AI communication protocol
 
 ## License
 
