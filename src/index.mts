@@ -154,9 +154,10 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         "yt-dlp",
         [
           "-f",
-          "((bv*[height<=1080])/bv*)+ba/b",
-          "--merge-output-format",
-          "mp4",
+          "bv*+ba/b",
+          "--progress",
+          "--progress-template",
+          "download:[download] %(progress._percent_str)s of %(progress._total_bytes_str)s at %(progress._speed_str)s ETA %(progress._eta_str)s",
           "-o",
           outputTemplate,
           url,
