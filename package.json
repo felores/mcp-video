@@ -1,6 +1,6 @@
 {
   "name": "@felores/mcp-video",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "bin": {
     "mcp-video": "lib/index.mjs"
   },

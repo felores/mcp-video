@@ -122,29 +122,30 @@ After installing the prerequisites above, you can install the MCP server using o
 
 ### Option 1: NPX Installation (Recommended)
 
-The easiest way to install and use the MCP server is via npx:
+Add the following to your `claude_desktop_config.json`:
+
 ```bash
-npx @felores/mcp-video
+{
+"mcpServers": {    
+   "video": {
+      "command": "npx",
+      "env": {
+        "DOWNLOADS_DIR": "path/to/downloads"
+      }
+    }
+  }
+}
 ```
 
 This will automatically install and run the latest version of the server.
 
-For a permanent installation:
-```bash
-npm install -g @felores/mcp-video
-mcp-video
-```
-
 ### Option 2: Using MCP Installer
 
-Install using the [mcp-installer](https://github.com/anaisbetts/mcp-installer):
+Install using the [mcp-installer](https://github.com/anaisbetts/mcp-installer), after installing the MCP server, prompt claude to install the MCP server:
 ```bash
-# Install mcp-installer if you haven't already
-npm install -g @anaisbetts/mcp-installer
-
-# Install this MCP server
-mcp-installer install @felores/mcp-video
+Install @felores/mcp-video with environment DOWNLOADS_DIR set to path/to/downloads
 ```
+Modify path/to/downloads to your desired downloads directory system path.
 
 ### Option 3: Manual Installation (For Developers)
 
@@ -169,6 +170,21 @@ mcp-installer install @felores/mcp-video
    npm start
    ```
 
+Add the following to your `claude_desktop_config.json`:
+
+```bash
+{
+"mcpServers": {    
+   "video": {
+      "command": "node",
+      "args": ["path/to/mcp-video/lib/index.mjs"],
+      "env": {
+        "DOWNLOADS_DIR": "path/to/downloads"
+      }
+    }
+  }
+}
+```
 ## Usage
 
 Once installed, you can use this server through any MCP-compatible client (like Claude.ai). Here are some example prompts:
@@ -191,55 +207,6 @@ The server will automatically:
 ## Environment Variables
 
 - `DOWNLOADS_DIR`: Specify a custom directory for downloaded videos (default: `./downloads`)
-
-## Development
-
-### Setting Up Development Environment
-
-1. Fork and clone the repository:
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/mcp-video.git
-   cd mcp-video
-   ```
-
-2. Install development dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Build the project:
-   ```bash
-   npm run build
-   ```
-
-4. Start the development server:
-   ```bash
-   npm start
-   ```
-
-### Running Tests
-```bash
-npm test
-```
-
-### Making Changes
-1. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. Make your changes and commit:
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   ```
-
-3. Push to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-4. Create a Pull Request from your fork to the main repository
 
 ## Reference
 
