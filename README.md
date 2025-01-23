@@ -58,9 +58,12 @@ Add the following to your `claude_desktop_config.json`:
 
 ```bash
 {
-"mcpServers": {    
-   "video": {
+  "mcpServers": {    
+    "video": {
       "command": "npx",
+      "args": [
+        "@felores/mcp-video"
+      ],
       "env": {
         "DOWNLOADS_DIR": "path/to/downloads"
       }
@@ -74,7 +77,7 @@ This will automatically install and run the latest version of the server.
 
 ### Option 2: Using MCP Installer
 
-Install using the [mcp-installer](https://github.com/anaisbetts/mcp-installer), after installing the MCP server, prompt claude to install the MCP server:
+Install the [mcp-installer](https://github.com/anaisbetts/mcp-installer), restart Claude, and prompt claude to install the Video MCP Server:
 ```bash
 Install @felores/mcp-video with environment DOWNLOADS_DIR set to path/to/downloads
 ```
