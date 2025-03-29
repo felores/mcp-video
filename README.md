@@ -39,7 +39,34 @@ Using package manager:
    sudo apt install yt-dlp
    ```
 
-### 2. Node.js and npm
+### 2. FFmpeg (Required)
+
+FFmpeg is required for merging audio and video streams when downloading videos. Install it for your platform:
+
+#### Windows
+Using WinGet (Recommended):
+   ```powershell
+   winget install --id=Gyan.FFmpeg -e
+   ```
+Alternatively, you can install it using Chocolatey:
+   ```powershell
+   choco install ffmpeg
+   ```
+Or follow the [manual installation guide](https://phoenixnap.com/kb/ffmpeg-windows).
+
+#### macOS
+Using Homebrew:
+   ```bash
+   brew install ffmpeg
+   ```
+
+#### Linux
+Using package manager:
+   ```bash
+   sudo apt install ffmpeg
+   ```
+
+### 3. Node.js and npm
 
 1. Install Node.js (version 18 or higher) and npm from [nodejs.org](https://nodejs.org/)
 2. Verify installation:
